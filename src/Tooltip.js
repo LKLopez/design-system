@@ -59,9 +59,7 @@ const tooltipPosition = props => {
 const tooltipAlign = props => {
   return props.right
     ? { right: 0 }
-    : props.center
-      ? { left: '50%', width: 'auto', transform: 'translateX(-50%)' }
-      : null
+    : props.center ? { left: '50%', transform: 'translateX(-50%)' } : null
 }
 
 const TooltipContent = styled(Box)`
@@ -87,6 +85,11 @@ const TooltipContent = styled(Box)`
     ${arrow} ${arrowPosition} ${arrowAlign} ${arrowShadow};
   }
 `
+const numberStringOrArray = PropTypes.oneOfType([
+  PropTypes.number,
+  PropTypes.string,
+  PropTypes.array
+])
 
 const propTypes = {
   children: PropTypes.any.isRequired,
@@ -96,7 +99,8 @@ const propTypes = {
   top: PropTypes.bool,
   center: PropTypes.bool,
   left: PropTypes.bool,
-  right: PropTypes.bool
+  right: PropTypes.bool,
+  width: numberStringOrArray
 }
 
 const defaultProps = {
